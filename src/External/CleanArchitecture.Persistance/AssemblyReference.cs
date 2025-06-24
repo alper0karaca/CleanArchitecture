@@ -1,6 +1,8 @@
+using System.Reflection;
+
 namespace CleanArchitecture.Persistance;
 
-public class AssemblyReference
+public static class AssemblyReference
 {
-    
+    public static readonly Assembly Assembly = typeof(Assembly).Assembly;
 }

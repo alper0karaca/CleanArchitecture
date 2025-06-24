@@ -1,0 +1,11 @@
+@CleanArchitecture.WebApi_HostAddress = http://localhost:5152
+
+GET {{CleanArchitecture.WebApi_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{CleanArchitecture.WebApi_HostAddress}}/todos/1
+Accept: application/json
+
+###
