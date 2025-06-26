@@ -7,7 +7,6 @@ namespace CleanArchitecture.Application.Behaviors;
 /* Validation davranışı için.
 IPipelineBehavior -> MediatR dan gelir.
 */
-
 public sealed class ValidationBehavior<TRequest,TResponse> : 
     IPipelineBehavior<TRequest, TResponse> where TRequest : class, IRequest<TResponse>
 {
@@ -44,13 +43,12 @@ public sealed class ValidationBehavior<TRequest,TResponse> :
             var errors = errorDictionary.Select(x => 
                     new ValidationFailure()
                     {
-                        PropertyName = x.Key,
-                        ErrorMessage = x.Value,
+                        PropertyName = x.Value,
+                        ErrorMessage = x.Key,
                     }) ;
             
             throw new ValidationException(errors);
         }
         return await next(); 
-        
     }
 }
