@@ -1,6 +1,9 @@
 using CleanArchitecture.Application.Behaviors;
+using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.Services;
+using CleanArchitecture.Persistance;
 using CleanArchitecture.Persistance.Context;
+using CleanArchitecture.Persistance.Repositories;
 using CleanArchitecture.Persistance.Services;
 using CleanArchitecture.WebApi.Middleware;
 using FluentValidation;
@@ -20,6 +23,11 @@ string connectionString = builder.Configuration.GetConnectionString("SqlServer")
 
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(connectionString));
+
+// services.AddScoped<AppDbContext>();
+// generic
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork<AppDbContext>>();
+builder.Services.AddScoped<ICarRepository, CarRepository>();
 
 // uygulamanın başka bir katmanda conntrollerların devam edeceğini bildiriyoruz.
 builder.Services.AddControllers()

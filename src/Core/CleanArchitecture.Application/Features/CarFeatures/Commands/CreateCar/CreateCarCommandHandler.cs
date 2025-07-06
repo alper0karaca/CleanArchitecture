@@ -16,7 +16,6 @@ public sealed class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, 
     {
         //işlemler
         await _carService.CreateAsync(request, cancellationToken);
-        
         return new("Araç başarıyla kayıt edildi");
     }
 }
