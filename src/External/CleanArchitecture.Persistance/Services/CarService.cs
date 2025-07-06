@@ -1,4 +1,5 @@
 using AutoMapper;
+using CleanArchitecture.Application.Common;
 using CleanArchitecture.Application.Features.CarFeatures.Commands.CreateCar;
 using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 using CleanArchitecture.Application.Interfaces;
@@ -34,5 +35,22 @@ public sealed class CarService : ICarService
     {
         var cars = await _carRepository.ListAllAsync();
         return _mapper.Map<IList<CarDto>>(cars);
+    }
+
+    public async Task<PaginationResponse<CarDto>> GetAllPaginatedAsync(PaginationRequest request)
+    {
+        var (items, totalCount) = await _carRepository.GetPaginatedAsync(
+            pageNumber: request.PageNumber,
+            pageSize: request.PageSize
+        );
+
+        var dtoList = _mapper.Map<IReadOnlyList<CarDto>>(items);
+
+        return new PaginationResponse<CarDto>(
+            dtoList,
+            totalCount,
+            request.PageNumber,
+            request.PageSize
+        );
     }
 }

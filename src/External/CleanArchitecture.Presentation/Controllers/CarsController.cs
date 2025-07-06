@@ -25,4 +25,12 @@ public sealed class CarsController : ApiController
         IList<CarDto> response = await _mediator.Send(request,cancellationToken);
         return Ok(response);
     }
+    
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetAllCarPaginated(GetPaginatedCarsQuery request)
+    {
+        var result  = await _mediator.Send(request);
+        return Ok(result);
+    }
+    
 }
