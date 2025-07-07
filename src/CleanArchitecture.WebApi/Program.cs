@@ -1,6 +1,7 @@
 using CleanArchitecture.Application.Behaviors;
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.Services;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Persistance;
 using CleanArchitecture.Persistance.Context;
 using CleanArchitecture.Persistance.Repositories;
@@ -28,6 +29,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // generic
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<AppDbContext>>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+//identity 
+builder.Services.AddIdentity<AppUser, AppUserRole>(options =>
+    {
+        options.Password.RequiredLength = 3;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = true;
+    })
+    .AddEntityFrameworkStores<AppDbContext>();
 
 // uygulamanın başka bir katmanda conntrollerların devam edeceğini bildiriyoruz.
 builder.Services.AddControllers()
