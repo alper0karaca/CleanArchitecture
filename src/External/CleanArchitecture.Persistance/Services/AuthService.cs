@@ -11,11 +11,13 @@ public sealed class AuthService : IAuthService
 {
     private readonly UserManager<AppUser> _userManager;
     private readonly IMapper _mapper;
+    private readonly IMailService _mailService;
 
-    public AuthService(UserManager<AppUser> userManager, IMapper mapper)
+    public AuthService(UserManager<AppUser> userManager, IMapper mapper, IMailService mailService)
     {
         _userManager = userManager;
         _mapper = mapper;
+        _mailService = mailService;
     }
     
     public async Task RegisterAsync(RegisterCommand request)
@@ -26,5 +28,9 @@ public sealed class AuthService : IAuthService
         {
             throw new Exception(result.Errors.First().Description);
         }
+
+        await _mailService.SendMailAsync(request.Email, 
+            "Clean Arch Sistemine başarıyla kayıt oluşturuldu",
+            $"Hoş geldin {request.UserName}, kayıt işlemin başarılı oldu.");
     }
 }

@@ -2,6 +2,7 @@ using CleanArchitecture.Application.Behaviors;
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
+using CleanArchitecture.Infrastructure.Email;
 using CleanArchitecture.Persistance;
 using CleanArchitecture.Persistance.Context;
 using CleanArchitecture.Persistance.Repositories;
@@ -24,6 +25,10 @@ string connectionString = builder.Configuration.GetConnectionString("SqlServer")
 
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(connectionString));
+
+// Mail configs
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<IMailService, MailService>();
 
 // services.AddScoped<AppDbContext>();
 // generic
