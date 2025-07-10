@@ -49,7 +49,7 @@ builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
 builder.Services.AddIdentity<AppUser, AppUserRole>(options =>
     {
         options.Password.RequiredLength = 3;
-        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireNonAlphanumeric = true;
         options.Password.RequireUppercase = true;
     })
     .AddEntityFrameworkStores<AppDbContext>();
