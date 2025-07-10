@@ -9,6 +9,6 @@ public sealed class AppUser : IdentityUser<string>
         Id = Guid.NewGuid().ToString();
     }
 
-    public string RefreshToken { get; set; }
+    public string? RefreshToken { get; set; }
     public DateTime? RefreshTokenExpires { get; set; }
 }
