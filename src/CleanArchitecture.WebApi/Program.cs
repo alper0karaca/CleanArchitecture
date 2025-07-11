@@ -39,7 +39,11 @@ builder.Services.AddScoped<IMailService, MailService>();
 // generic
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<AppDbContext>>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
 // jwt configs
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
@@ -50,7 +54,7 @@ builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddAuthorization();
 
 //identity 
-builder.Services.AddIdentity<AppUser, AppUserRole>(options =>
+builder.Services.AddIdentity<AppUser, AppRole>(options =>
     {
         options.Password.RequiredLength = 3;
         options.Password.RequireNonAlphanumeric = true;

@@ -2,16 +2,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CleanArchitecture.Domain.Entities;
 
-public sealed class AppUser : IdentityUser<string>
+public class AppRole : IdentityRole<string>
 {
-    public AppUser()
+    public AppRole()
     {
         Id = Guid.NewGuid().ToString();
     }
-
-    public string? RefreshToken { get; set; }
-    public DateTime? RefreshTokenExpires { get; set; }
-
+    
     public ICollection<AppUserRole>? UserRoles { get; set; }
-
 }
