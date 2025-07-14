@@ -6,6 +6,6 @@ namespace CleanArchitecture.Domain.Entities;
 
 public class AppUserRole : IdentityUserRole<string>
 {
-    public AppUser? AppUser { get; set; }
-    public AppRole? AppRole { get; set; }
+    public AppUser AppUser { get; set; }
+    public AppRole AppRole { get; set; }
 }

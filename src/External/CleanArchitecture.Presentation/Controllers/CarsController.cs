@@ -20,6 +20,7 @@ public sealed class CarsController : ApiController
         return Ok(response);
     }
 
+    [Authorize(Policy = "Admin")]
     [HttpPost("[action]")]
     public async Task<IActionResult> GetAll(GetAllCarQuery request, CancellationToken cancellationToken)
     {

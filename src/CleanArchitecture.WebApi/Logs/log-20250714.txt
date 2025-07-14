@@ -1,0 +1,52 @@
+2025-07-14 10:00:59.709 +03:00 [INF] User profile is available. Using '/Users/alperkaraca/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-07-14 10:00:59.822 +03:00 [INF] Now listening on: http://localhost:5152
+2025-07-14 10:00:59.825 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-14 10:00:59.825 +03:00 [INF] Hosting environment: Development
+2025-07-14 10:00:59.825 +03:00 [INF] Content root path: /Users/alperkaraca/RiderProjects/CleanArchitecture/src/CleanArchitecture.WebApi
+2025-07-14 10:01:00.032 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/swagger/index.html - null null
+2025-07-14 10:01:00.150 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/swagger/index.html - 200 null text/html;charset=utf-8 117.7749ms
+2025-07-14 10:01:00.171 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/swagger/index.js - null null
+2025-07-14 10:01:00.174 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/swagger/index.js - 200 null application/javascript;charset=utf-8 3.1434ms
+2025-07-14 10:01:00.207 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5152/swagger/v1/swagger.json - null null
+2025-07-14 10:01:00.279 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5152/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 71.9187ms
+2025-07-14 10:01:52.846 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/api/Auth/Login - application/json 77
+2025-07-14 10:01:52.978 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-14 10:01:53.608 +03:00 [INF] Executing endpoint 'CleanArchitecture.Presentation.Controllers.AuthController.Login (CleanArchitecture.Presentation)'
+2025-07-14 10:01:53.618 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CleanArchitecture.Application.Features.AuthFeatures.Commands.Login.LoginCommand, System.Threading.CancellationToken) on controller CleanArchitecture.Presentation.Controllers.AuthController (CleanArchitecture.Presentation).
+2025-07-14 10:01:53.640 +03:00 [INF] Executing action method CleanArchitecture.Presentation.Controllers.AuthController.Login (CleanArchitecture.Presentation) - Validation state: "Valid"
+2025-07-14 10:01:54.015 +03:00 [INF] Executed DbCommand (24ms) [Parameters=[@__request_UserNameOrEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpires], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserName] = @__request_UserNameOrEmail_0 OR [a].[Email] = @__request_UserNameOrEmail_0
+2025-07-14 10:01:54.137 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpires], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-14 10:01:54.276 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpires] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2025-07-14 10:01:54.288 +03:00 [INF] Executed action method CleanArchitecture.Presentation.Controllers.AuthController.Login (CleanArchitecture.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 644.3268ms.
+2025-07-14 10:01:54.295 +03:00 [INF] Executing OkObjectResult, writing value of type 'CleanArchitecture.Application.Features.AuthFeatures.Commands.Login.LoginCommandResponse'.
+2025-07-14 10:01:54.314 +03:00 [INF] Executed action CleanArchitecture.Presentation.Controllers.AuthController.Login (CleanArchitecture.Presentation) in 693.5932ms
+2025-07-14 10:01:54.315 +03:00 [INF] Executed endpoint 'CleanArchitecture.Presentation.Controllers.AuthController.Login (CleanArchitecture.Presentation)'
+2025-07-14 10:01:54.328 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/api/Auth/Login - 200 null application/json; charset=utf-8 1481.8447ms
+2025-07-14 10:03:17.033 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5152/api/Cars/GetAll - application/json 2
+2025-07-14 10:03:17.168 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-07-14 10:03:17.194 +03:00 [INF] Executing endpoint 'CleanArchitecture.Presentation.Controllers.CarsController.GetAll (CleanArchitecture.Presentation)'
+2025-07-14 10:03:17.195 +03:00 [INF] Route matched with {action = "GetAll", controller = "Cars"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar.GetAllCarQuery, System.Threading.CancellationToken) on controller CleanArchitecture.Presentation.Controllers.CarsController (CleanArchitecture.Presentation).
+2025-07-14 10:03:17.221 +03:00 [INF] Executing action method CleanArchitecture.Presentation.Controllers.CarsController.GetAll (CleanArchitecture.Presentation) - Validation state: "Valid"
+2025-07-14 10:03:17.230 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CreatedDate], [c].[Model], [c].[Name], [c].[Power], [c].[UpdatedDate]
+FROM [Cars] AS [c]
+2025-07-14 10:03:17.246 +03:00 [INF] Executed action method CleanArchitecture.Presentation.Controllers.CarsController.GetAll (CleanArchitecture.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 25.423ms.
+2025-07-14 10:03:17.247 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[CleanArchitecture.Domain.Dtos.CarDto, CleanArchitecture.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-14 10:03:17.257 +03:00 [INF] Executed action CleanArchitecture.Presentation.Controllers.CarsController.GetAll (CleanArchitecture.Presentation) in 61.5365ms
+2025-07-14 10:03:17.257 +03:00 [INF] Executed endpoint 'CleanArchitecture.Presentation.Controllers.CarsController.GetAll (CleanArchitecture.Presentation)'
+2025-07-14 10:03:17.283 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5152/api/Cars/GetAll - 200 null application/json; charset=utf-8 254.0374ms
